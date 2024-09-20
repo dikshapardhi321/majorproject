@@ -1,0 +1,65 @@
+<% layout("/layouts/boilerplate") %>
+<div class="row mt-3">
+    <!-- offset means left se space dena -->
+    <div class="col-8  offset-2">
+        <br><br>
+    <h3>Create a new Listing</h3>
+    <!-- ye nonvalidate bootstrap se liye hai required ke jagah use karne ke liye -->
+     <!-- and isase hum agar form bina bhare submit karenge toh boxes red ho jayenge -->
+      <!-- ye enctype se hum images upload kar sakte hai -->
+    <form method="POST"action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
+        <!-- humne ye for vagere bootstrap se liye hai -->
+         <!-- mb-3 ye bootstrap ki ek class hai jisase space create hoti hai -->
+        <div class="mb-3">
+            <label for="title"class="form-label">Title</label>
+            <input name="listing[title]"placeholder="enter title"type="text"class="form-control"required>
+            <!-- mtlb humne yaha bootstap ki class li hai jab hum valid title dalemge toh title look good likhke aayenga -->
+            <div class="valid-feedback">title looks good! </div>
+        </div>
+        <div class="mb-3">
+            <label for="description"class="form-label">Description</label> 
+            <textarea name="listing[description]"placeholder="enter description"class="form-control"required></textarea>
+            <div class="invalid-feedback">please enter the short discussion</div>
+        </div>
+
+       <!-- <div class="mb-3">
+        <label for="image"class="form-label">Enter image link/url</label>
+        <input name="listing[image]"placeholder="enter image url"type="text"class="form-control">
+       </div> -->
+
+        <!-- hum hum hamesha link upload karna ho toh type me text likhte the but ab humko images upload karni hai toh type me file likhenge -->
+       <div class="mb-3">
+        <label for="image"class="form-label">upload image</label>
+        <input name="listing[image]"type="file"class="form-control" required>
+       </div>
+
+       <!-- price and country ko same line me lane ke liye firse div lenge   -->
+      <!--   and basically price and country same div me rakhne se hame same line me milenga vo -->
+        <div class="row">
+            <div class="mb-3 col-md-4">
+                <label for="price"class="form-label">price</label>
+                <input name="listing[price]"placeholder="enter price" class="form-control"required>
+                <!-- ab agar hum no. me nhi dalte toh vaha err show hoke niche likhke aayenga ki number should be deleted -->
+                <div class="invalid-feedback">price should be valid</div>
+            </div>
+
+            <div class="mb-3 col-md-8">
+                <label for="country"class="form-label">country</label>
+                <input name="listing[country]"placeholder="enter country"type="text"class="form-control"required>
+                <div class="invalid-feedback">please enter the correct country</div>
+            </div>
+
+        </div>
+        <!-- yaha humne sabme required likhe hai toh hum form aise hi fill nhi kar payenge required aa jayenga but agar hum same website ko koi aur platform me kholenge toh bina info fill kiye submit karenge toh humne thoda alag interface milenga requied ka website same dikhe isliye hum bootstrap ke validation use karenge-->
+        <div class="mb-3">
+            <label for="location"class="form-label">location</label>
+            <input name="listing[location]"placeholder="enter location"type="text"class="form-control"required>
+            <div class="invalid-feedback">please enter the correct location</div>
+        </div>
+       
+        <!-- bootstap button -->
+        <button class="btn btn-dark add-btn mt-3">Add</button>
+       
+    </form>
+  </div>
+</div>

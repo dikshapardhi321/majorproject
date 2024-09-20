@@ -1,0 +1,26 @@
+<!-- yaha success.length lene se hamara empty flash nhi honga kuch and 
+ isme humne bootstrap ki clases use ki ahai -->
+
+ <% if(success  && success.length){ %>
+    <!-- offet se centre me aata hai means hamara alert centre me aa jayenga-->
+    <div class="alert alert-success alert-dismissible fade show col-6 offset-3"role="alert">
+         <%= success %>
+         <!-- ye button bhi humne bootstrap se liye hai alert show karne ke liye -->
+          <!-- and ye btn ka kam hota hai ki flash ke side me ek cross aata hai jisase hum apne alert ko hata sakte hai -->
+        <button type="button"class="btn-close"data-bs-dismiss="alert"aria-label="Close"></button>
+        </div>
+<% } %>
+
+<!-- flash the error -->
+<% if(error  && error.length){ %>
+    <!-- offet se centre me aata hai means hamara alert centre me aa jayenga-->
+    <div class="alert alert-danger alert-dismissible fade show col-6 offset-3"role="alert">
+         <%= error %>
+         <!-- ye button bhi humne bootstrap se liye hai alert show karne ke liye -->
+          <!-- and ye btn ka kam hota hai ki flash ke side me ek cross aata hai jisase hum apne alert ko hata sakte hai -->
+        <button type="button"class="btn-close"data-bs-dismiss="alert"aria-label="Close"></button>
+        </div>
+<% } %>
+
+
+

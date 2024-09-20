@@ -1,0 +1,140 @@
+<% layout("/layouts/boilerplate")%>
+<style>
+    #filters{
+        /* isase hamare logo same line me aa jayenge */
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .filter{
+        text-align: center;
+        /* isase hamre logo ke bich me gap aa jayengei */
+        margin-right: 2rem;
+        margin-top: 2rem;
+        opacity: 0.7;
+    }
+    .filter:hover{
+        opacity: 1;
+        cursor: pointer;
+    }
+    .filter p{
+        font-size: 0.8rem;
+    }
+    .tax-info{
+        /* do option hote hai hide kaerene ke ke visibilty hidden jo code me rehta hai means place occupied krata hai
+        but dikhat nhi and ek display none means vo dikhat bhi nhi and place bhi occupied nhi karta*/
+        display: none;
+    }
+    .tax-toggle{
+        border: 1px solid black;
+        border-radius: 1rem;
+        height: 3.25rem;
+        /* isase centre me aa jaynega switch */
+        padding: 1rem;
+        margin-left: 3rem;
+        display: flex;
+        align-items: center;
+    }
+</style>
+
+    <!-- <h3>All Listings</h3> -->
+     <div id="filters">
+        <div class="filter">
+            <div><i class="fa-solid fa-fire"></i></div>
+           <p>Trending</p> 
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-bed"></i></div>
+           <p>Rooms</p> 
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-mountain-city"></i></div>
+           <p>Iconic cities</p> 
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-mountain"></i></div>
+           <p>Mountains</p> 
+        </div>
+        <div class="filter">
+            <div><i class="fa-brands fa-fort-awesome"></i></div>
+           <p>castles</p> 
+        </div>
+        <div class="filter">
+            <div><i class="fa-regular fa-snowflake"></i></div>
+           <p>Aractic</p> 
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-campground"></i></div>
+           <p>campign</p> 
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-cow"></i></div>
+           <p>Farms</p> 
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-person-swimming"></i></div>
+           <p>Amazing pool</p> 
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-igloo"></i></div>
+           <p>Domes</p> 
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-ship"></i></div>
+           <p>Boat</p> 
+        </div>
+       
+        <!-- bootstrap se ye code copy kiye hai -->
+       <div class="tax-toggle">
+        <div class="form-check-reverse form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Display total after Taxes</label>
+          </div>
+       </div>
+
+
+     </div>
+    <!-- ye button ko humne isliye comment out kar diye becoz iska kam ab navbar ke option kari gai -->
+    <!-- <form method="GET" action="/listings/new">
+        <button>Create new Listing</button>
+    </form> -->
+    <!-- ye class ka mtlb hai ki small screen par ek card dikhe medium par 2 and lagre par 3 -->
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+        <% for(let listing of allListings){ %>
+            <a href="/listings/<%= listing._id %>" class="listing-link">
+            <div class="card col listing-card">
+                <!-- yaha url likhne se hamari imag access ho pari hai otherwise vo load nh hongoio -->
+                <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" style="height: 20rem;">
+                <!-- ye card img overlay humne bootstrap se liey hai jab bhi image ke upar humne kuch limhna hai toh hum ye class use karte hai -->
+                <div class="card-img-overlay"></div>
+                <div class="card-body">
+                  <p class="card-text">
+                    <b><%= listing.title %></b>
+                    <br>&#8377; <%= listing.price.toLocaleString("en-IN") %>/night
+                    <i class="tax-info">&nbsp;&nbsp;+18% GST</i>
+                </p>
+                </div>
+              </div>
+             </a>
+              <% } %>
+    </div>
+   
+    <script>
+        let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+        taxSwitch.addEventListener("click",()=>{
+            // console.log("clicked!");
+           let taxInfo = document.getElementsByClassName("tax-info");
+        //    pure listing ke liye tax nikalna hai isliye loop lagayenge
+        for(info of taxInfo){
+            if( info.style.display != "inline"){
+             // humne ko tax same line me cgaiye isliye inline likhe itherwise block likhte
+            info.style.display = "inline";
+        }else{
+            // isk mtlb ahi ye ki jab hum switch karenge toh if already inline hai toh ye +18%gst ko hide kar denga
+            info.style.display = "none";
+        }
+     }
+            } );
+    </script>
+
+

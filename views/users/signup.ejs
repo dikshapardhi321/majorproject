@@ -1,0 +1,32 @@
+<% layout("/layouts/boilerplate")%>
+
+<div class="row mt-3">
+    <h1 class="col-6 offset-3">Signup for Wanderlust</h1>
+    <!-- offset means left se space dena -->
+    <div class="col-6  offset-3">
+        <!-- needs validation jo hai vo class hai jo ki bootstrap ki styling add karenga -->
+     <form action="/signup"method="POST"class="needs-validation"novalidate>
+        <div class="mb-3">
+            <label for="username"class="form-label">Username</label>
+            <input name="username"type="text"class="form-control"id="username"required>
+            <!-- mtlb humne yaha bootstap ki class li hai jab hum valid title dalemge toh title look good likhke aayenga -->
+            <div class="valid-feedback"> looks good! </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="email"class="form-label">Email</label>
+            <input name="email"type="email"class="form-control"id="email"required>
+            <!-- mtlb humne yaha bootstap ki class li hai jab hum valid title dalemge toh title look good likhke aayenga -->
+        </div>
+          
+        <div class="mb-3">
+            <label for="passwor"class="form-label">Password</label>
+            <input name="password"type="password"class="form-control"id="password"required>
+            <!-- mtlb humne yaha bootstap ki class li hai jab hum valid title dalemge toh title look good likhke aayenga -->
+            <div class="valid-feedback"> looks good! </div>
+        </div>
+        <button  class="btn btn-success">Signup</button>
+     </form>
+    
+    </div>
+</div>
